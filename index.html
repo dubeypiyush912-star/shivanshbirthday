@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday 🎉</title>
+
+<style>
+body {
+  margin: 0;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 3em;
+  color: white;
+  margin-top: 50px;
+}
+
+p {
+  font-size: 1.5em;
+  color: white;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  background: #ff4081;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #e91e63;
+}
+
+/* Balloons */
+.balloon {
+  width: 40px;
+  height: 50px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -100px;
+  animation: float 6s infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-110vh); }
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🎉 Happy Birthday 🎂</h1>
+<p id="message">Click below for a surprise!</p>
+
+<button onclick="showWish()">🎁 Click Me</button>
+
+<script>
+function showWish() {
+  document.getElementById("message").innerText =
+    "Wishing you lots of happiness, success and fun! 🎈🎊";
+}
+
+/* Create balloons */
+for (let i = 0; i < 15; i++) {
+  let balloon = document.createElement("div");
+  balloon.className = "balloon";
+  balloon.style.left = Math.random() * 100 + "vw";
+  balloon.style.background = "hsl(" + Math.random()*360 + ",70%,60%)";
+  balloon.style.animationDuration = (3 + Math.random()*5) + "s";
+  document.body.appendChild(balloon);
+}
+</script>
+
+</body>
+</html>
