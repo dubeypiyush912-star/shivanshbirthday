@@ -8,51 +8,73 @@
 <style>
 body {
   margin: 0;
+  font-family: 'Segoe UI', sans-serif;
   text-align: center;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #ff9a9e, #fad0c4);
-  overflow: hidden;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  color: white;
 }
 
+/* Card Design */
+.container {
+  background: rgba(255,255,255,0.15);
+  padding: 20px;
+  margin: 50px auto;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Heading */
 h1 {
-  font-size: 3em;
-  color: white;
-  margin-top: 50px;
+  font-size: 2.5em;
 }
 
-p {
-  font-size: 1.5em;
-  color: white;
+/* Image */
+img {
+  width: 200px;
+  border-radius: 50%;
+  border: 5px solid white;
+  margin: 20px 0;
 }
 
+/* Button */
 button {
-  padding: 10px 20px;
-  font-size: 18px;
+  padding: 12px 25px;
   border: none;
-  background: #ff4081;
-  color: white;
-  border-radius: 10px;
+  border-radius: 25px;
+  background: white;
+  color: #ff4b7d;
+  font-size: 16px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 button:hover {
-  background: #e91e63;
+  background: #ffe4ec;
 }
 
-/* Balloons */
-.balloon {
-  width: 40px;
-  height: 50px;
-  background: red;
-  border-radius: 50%;
-  position: absolute;
-  bottom: -100px;
-  animation: float 6s infinite;
+/* Message */
+#message {
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+/* Floating hearts */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  color: pink;
+  font-size: 20px;
+  animation: float 5s linear infinite;
 }
 
 @keyframes float {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-110vh); }
+  to {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
 }
 </style>
 
@@ -60,39 +82,33 @@ button:hover {
 
 <body>
 
-<h1>🎉 Happy Birthday shivansh 🎂</h1>
-<img src="https://dubeypiyush912-star.github.io/shivanshbirthday/photo.jpg" 
-     style="width:250px; border-radius:20px; margin-top:20px;">
-<p id="message">Click below for a surprise!</p>
-  <audio id="music" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
+<div class="container">
+  <h1>🎉 Happy Birthday Shivansh 🎂</h1>
 
-<button onclick="playMusic()" style="margin-top:20px;">🎵 Play Music</button>
+  <img src="photo.jpg">
 
-<script>
-function playMusic() {
-  document.getElementById("music").play();
-}
-</script>
+  <p id="message">Click below for surprise 💖</p>
 
-<button onclick="showWish()">🎁 Click Me</button>
+  <button onclick="showWish()">🎁 Click Me</button>
+</div>
 
 <script>
 function showWish() {
   document.getElementById("message").innerText =
-    "Wishing you lots of happiness, success and fun! 🎈🎊";
+  "💖 Wishing you happiness, success & lots of love! 🎈✨";
 }
 
-/* Create balloons */
-for (let i = 0; i < 15; i++) {
-  let balloon = document.createElement("div");
-  balloon.className = "balloon";
-  balloon.style.left = Math.random() * 100 + "vw";
-  balloon.style.background = "hsl(" + Math.random()*360 + ",70%,60%)";
-  balloon.style.animationDuration = (3 + Math.random()*5) + "s";
-  document.body.appendChild(balloon);
-}
+/* Hearts Animation */
+setInterval(() => {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (15 + Math.random()*20) + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 5000);
+}, 300);
 </script>
 
 </body>
