@@ -60,14 +60,21 @@ button:hover {
 
 <body>
 
-  <audio autoplay loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
-
 <h1>🎉 Happy Birthday shivansh 🎂</h1>
 <img src="https://dubeypiyush912-star.github.io/shivanshbirthday/photo.jpg" 
      style="width:250px; border-radius:20px; margin-top:20px;">
 <p id="message">Click below for a surprise!</p>
+  <audio id="music" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="playMusic()" style="margin-top:20px;">🎵 Play Music</button>
+
+<script>
+function playMusic() {
+  document.getElementById("music").play();
+}
+</script>
 
 <button onclick="showWish()">🎁 Click Me</button>
 
